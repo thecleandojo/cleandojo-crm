@@ -1,5 +1,5 @@
 
-<!-- saved from url=(0055)file:///C:/Users/alsaw/Downloads/clean-dojo-crm_21.html -->
+<!-- saved from url=(0055)file:///C:/Users/alsaw/Downloads/clean-dojo-crm_22.html -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -519,7 +519,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--black)
   <div class="nav-section">
     <div class="nav-label">Main</div>
     <div class="nav-item active" onclick="showPage(&#39;dashboard&#39;,this)"><span class="nav-icon">⌂</span><span>Dashboard</span></div>
-    <div class="nav-item" onclick="showPage(&#39;contacts&#39;,this)"><span class="nav-icon">👤</span><span>Contacts</span><span class="nav-badge" id="badge-contacts">4</span></div>
+    <div class="nav-item" onclick="showPage(&#39;contacts&#39;,this)"><span class="nav-icon">👤</span><span>Contacts</span><span class="nav-badge" id="badge-contacts">0</span></div>
     <div class="nav-item" onclick="showPage(&#39;pipeline&#39;,this)"><span class="nav-icon">📊</span><span>Pipeline</span></div>
     <div class="nav-item" onclick="showPage(&#39;schedule&#39;,this)"><span class="nav-icon">📅</span><span>Schedule</span></div>
   </div>
@@ -568,55 +568,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--black)
   <!-- DASHBOARD -->
   <div id="page-dashboard" class="page active">
     <div class="stats-row">
-      <div class="stat-card red"><div class="label">Total Leads</div><div class="value" id="stat-leads">4</div><div class="sub">All pipeline contacts</div></div>
+      <div class="stat-card red"><div class="label">Total Leads</div><div class="value" id="stat-leads">0</div><div class="sub">All pipeline contacts</div></div>
       <div class="stat-card gold"><div class="label">Open Deals</div><div class="value" id="stat-open">0</div><div class="sub">Active opportunities</div></div>
-      <div class="stat-card green"><div class="label">Clients Won</div><div class="value" id="stat-won">4</div><div class="sub">Closed this month</div></div>
+      <div class="stat-card green"><div class="label">Clients Won</div><div class="value" id="stat-won">0</div><div class="sub">Closed this month</div></div>
       <div class="stat-card"><div class="label">Tasks Due</div><div class="value" id="stat-tasks">0</div><div class="sub">Follow-ups pending</div></div>
     </div>
     <div class="dash-grid">
       <div class="card">
         <div class="card-header"><h3>Recent Leads</h3><span class="see-all" onclick="showPage(&#39;contacts&#39;,document.querySelectorAll(&#39;.nav-item&#39;)[1])">See all →</span></div>
-        <div class="card-body" id="recent-leads-list">
-    <div class="pipe-row" onclick="openDetail(1780127046849)">
-      <div class="pipe-avatar">GV</div>
-      <div class="pipe-info">
-        <div class="name">Giovanni Vuk -- Vuk Jiu Jitsu</div>
-        <div class="meta">vukmartialarts@gmail.com</div>
-      </div>
-      <span class="stage-pill stage-won">Won</span>
-      <span class="source-pill src-ig" style="font-size:10px;">📸</span>
-    </div>
-    <div class="pipe-row" onclick="openDetail(1780102882603)">
-      <div class="pipe-avatar">DP</div>
-      <div class="pipe-info">
-        <div class="name">Dan Pribble -- New Breed Martial arts - Lake Arrowhead</div>
-        <div class="meta">lostcoastkenpo@aol.com</div>
-      </div>
-      <span class="stage-pill stage-won">Won</span>
-      <span class="source-pill src-ig" style="font-size:10px;">📸</span>
-    </div>
-    <div class="pipe-row" onclick="openDetail(1780102783539)">
-      <div class="pipe-avatar">DP</div>
-      <div class="pipe-info">
-        <div class="name">Dan Pribble -- New Breed (Ranchero Rd)</div>
-        <div class="meta">lostcoastkenpo@aol.com</div>
-      </div>
-      <span class="stage-pill stage-won">Won</span>
-      <span class="source-pill src-ig" style="font-size:10px;">📸</span>
-    </div>
-    <div class="pipe-row" onclick="openDetail(1780102338725)">
-      <div class="pipe-avatar">DP</div>
-      <div class="pipe-info">
-        <div class="name">Dan Pribble -- Ronin Martial Arts (Hesperia RD)</div>
-        <div class="meta">lostcoastkenpo@aol.com</div>
-      </div>
-      <span class="stage-pill stage-won">Won</span>
-      <span class="source-pill src-ig" style="font-size:10px;">📸</span>
-    </div></div>
+        <div class="card-body" id="recent-leads-list"><div class="empty-state"><div class="icon">👤</div><p>No leads yet. Add your first contact!</p></div></div>
       </div>
       <div class="card">
         <div class="card-header"><h3>Today's Follow-ups</h3><span class="see-all" onclick="openModal(&#39;add-task-modal&#39;)">+ Add task</span></div>
-        <div class="card-body" id="tasks-list"><div class="empty-state"><div class="icon">✓</div><p>No pending tasks!</p></div></div>
+        <div class="card-body" id="tasks-list"><div class="empty-state"><div class="icon">✓</div><p>No tasks. You're all clear!</p></div></div>
       </div>
     </div>
   </div>
@@ -1954,6 +1918,37 @@ window.exportData = function(){ try { exportData(); } catch(e){ console.error(e)
 window.importData = function(ev){ try { importData(ev); } catch(e){ console.error(e); } };
 window.toggleCountry = function(){ try { toggleCountry(); } catch(e){}; };
 window.setIntl = function(){ try { setIntl(); } catch(e){}; };
+
+// All onclick handler functions exposed to window scope
+var _fnList = [
+  'saveContact','saveQuickLead','saveTask','saveJob','saveInvoice','saveExpense',
+  'saveTx','saveMachineLead','saveTracking','saveRoute','saveEditContact',
+  'saveQuickLead','addStop','clearRoute','recalcRoute','geocodePreview',
+  'renderContacts','renderPipeline','renderSchedule','renderTemplates',
+  'renderDashboard','renderBkOverview','renderInvoices','renderExpenses',
+  'renderPL','renderTxLog','renderSequences','renderContentCalendar',
+  'renderMachinePipeline','renderIntlLeads','renderSavedRoutes',
+  'deleteContact','deleteMachineLead','deleteInvoice','deleteExpense','deleteTx',
+  'deleteRoute','openDetail','openEditContact','openMachineDetail',
+  'openInvoiceDetail','openCampaign','previewTemplate','previewTemplateName',
+  'copyTemplate','copyText','copySeq',
+  'addNote','addMachineNote','updateStage','updateMachineStage',
+  'updateInvoiceStatus','markInvoicePaid','updateFollowerCount',
+  'calcQuote','loadContactQuote','populateQuoteContacts',
+  'generateContent','generateReelScript','generateCarousel',
+  'generatePillarScript','selectReelType','toggleTask',
+  'fillStopFromClient','loadRoute','saveJob',
+  'generateTrackingEmail','setPlMonth',
+  'quickRetag','autoFillCourseAmount','generateReelScriptFor'
+];
+_fnList.forEach(function(name){
+  window[name] = function(){
+    try {
+      var fn = eval(name);
+      return fn.apply(this, arguments);
+    } catch(e){ console.error(name + ' error:', e); }
+  };
+});
 
 // ── STATE ────────────────────────────────────────────
 const K = {C:'tcd_contacts',T:'tcd_tasks',J:'tcd_jobs',R:'tcd_routes',M:'tcd_machines',I:'tcd_invoices',E:'tcd_expenses',X:'tcd_txlog',P:'tcd_posts',CA:'tcd_campaigns'};
@@ -4014,4 +4009,121 @@ function saveEditContact(){
   c.source=document.getElementById('ec-source').value;
   c.stage=document.getElementById('ec-stage').value;
   c.service=document.getElementById('ec-service').value;
-  c.sqft=parseInt(document.getE
+  c.sqft=parseInt(document.getElementById('ec-sqft').value)||0;
+  c.mattype=document.getElementById('ec-mattype').value;
+  c.address=document.getElementById('ec-address').value.trim();
+  c.lastContact=new Date().toLocaleDateString();
+  save();
+  closeAllModals();
+  renderContacts();
+  renderDashboard();
+  showToast('Contact updated -- '+c.name+' ✓');
+}
+
+// ── DELETE FUNCTIONS ─────────────────────────────────
+function deleteContact(id){
+  if(!confirm('Delete this contact? This cannot be undone.')) return;
+  contacts=contacts.filter(x=>x.id!==id);
+  save(); closeAllModals(); renderContacts(); renderDashboard();
+  showToast('Contact deleted');
+}
+
+function deleteMachineLead(id){
+  if(!confirm('Delete this machine lead? This cannot be undone.')) return;
+  machines=machines.filter(x=>x.id!==id);
+  save(); closeAllModals(); updateMachineBadges();
+  renderMachinePipeline(); renderIntlLeads();
+  showToast('Machine lead deleted');
+}
+
+
+// ── DATA EXPORT / IMPORT ─────────────────────────────
+function exportData(){
+  var data = {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    contacts: contacts,
+    tasks: tasks,
+    jobs: jobs,
+    routes: routes,
+    machines: machines,
+    invoices: invoices,
+    expenses: expenses,
+    txlog: txlog
+  };
+  var blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'cleandojo-backup-' + new Date().toLocaleDateString().replace(/\//g,'-') + '.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('Data exported -- ' + contacts.length + ' contacts saved');
+}
+
+function importData(event){
+  var file = event.target.files[0];
+  if(!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e){
+    try {
+      var data = JSON.parse(e.target.result);
+      if(!data.version){ showToast('Invalid backup file'); return; }
+      if(!confirm('This will replace all current data with the backup. Continue?')) return;
+      if(data.contacts) contacts = data.contacts;
+      if(data.tasks) tasks = data.tasks;
+      if(data.jobs) jobs = data.jobs;
+      if(data.routes) routes = data.routes;
+      if(data.machines) machines = data.machines;
+      if(data.invoices) invoices = data.invoices;
+      if(data.expenses) expenses = data.expenses;
+      if(data.txlog) txlog = data.txlog;
+      save();
+      renderDashboard();
+      updateMachineBadges();
+      updateInvoiceBadge();
+      updateTxBadge();
+      showToast('Data restored -- ' + contacts.length + ' contacts loaded');
+    } catch(err){
+      showToast('Error reading file: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+// ── HELPERS ──────────────────────────────────────────
+function initials(n){return n.split(' ').map(x=>x[0]).join('').toUpperCase().slice(0,2);}
+function df(label,val){return `<div class="detail-field"><div class="df-label">${label}</div><div class="df-value">${val}</div></div>`;}
+function svcLabel(s){return {onetime:'One-time',monthly:'Monthly',quarterly:'Quarterly',annual:'Annual'}[s]||s;}
+function stageClass(s){return {['New lead']:'stage-new',Contacted:'stage-contacted',['Proposal sent']:'stage-proposal',Won:'stage-won',Lost:'stage-lost'}[s]||'';}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+
+// ── INIT ─────────────────────────────────────────────
+function initApp() {
+  try {
+  try { document.getElementById('t-due').valueAsDate=new Date(); } catch(e){}
+renderDashboard();
+updateMachineBadges();
+updateInvoiceBadge();
+document.getElementById('inv-date').valueAsDate=new Date();
+document.getElementById('exp-date').valueAsDate=new Date();
+document.getElementById('tx-date').valueAsDate=new Date();
+document.getElementById('post-date').valueAsDate=new Date();
+updateTxBadge();
+  } catch(err) { console.warn('CRM init error:', err); }
+}
+// Run immediately - don't wait for DOMContentLoaded since functions 
+// need to be available for HTML onclick handlers
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  setTimeout(initApp, 1);
+} else {
+  document.addEventListener('DOMContentLoaded', initApp);
+}
+
+</script>
+
+
+</body></html>
